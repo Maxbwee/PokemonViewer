@@ -3,12 +3,12 @@ import type { PokemonDetail } from "../types/pokemon.js";
 
 
 export async function getPokemonByName(name: string): Promise<PokemonDetail | null> {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(name.trim())}`);
     if(res.status === 404) {
         return null;
     }
     if(!res.ok) {
-        throw new Error(`PokéAPI request failed (${res.status})`)
+        throw new Error(`PokeAPI request failed (${res.status})`)
     }
     const apiData = (await res.json() as RawPokemon);
 

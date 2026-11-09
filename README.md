@@ -1,16 +1,16 @@
-# Pokémon Viewer
+# Pokemon Viewer
 
-A locally run web app for browsing Pokémon. The React frontend talks to an Express backend. The backend gets data from [PokéAPI](https://pokeapi.co/) and trims it down to only what the UI needs.
+A locally run web app for searching Pokemon. The React frontend talks to an Express backend. The backend gets data from [PokéAPI](https://pokeapi.co/) and trims it down to only what the UI needs.
 
-<!-- TODO: add a screenshot once the frontend is built -->
-<!-- ![Screenshot](docs/screenshot.png) -->
+Initial design made in figma ![picture of initial layout design](images/design.png)¨
+
+Current state of frontend
+![Picture of frontend in its current state](images/frontend.png)
 
 ## Features
 
-- [x] Look up a Pokémon by name or id (API)
-- [ ] Search page in the frontend
-- [ ] Paginated grid of all Pokémon
-- [ ] Detail page with types, stats and abilities
+- [x] Look up a Pokemon by name or id (API)
+- [x] Search page in the frontend
 
 ## Tech stack
 
@@ -23,17 +23,15 @@ A locally run web app for browsing Pokémon. The React frontend talks to an Expr
 ## Project structure
 
 ```
-pokemon-app/
-├── client/                 # React + Vite frontend
-│   ├── src/
-│   └── vite.config.ts
-└── server/                 # Express backend
-    └── src/
-        ├── index.ts        # App setup and route mounting
-        ├── routes/         # HTTP routes (Express routers)
-        ├── services/       # PokéAPI calls and data reshaping
-        └── types/          # Our API types and PokéAPI raw types
+Frontend:
+client/src/
+  api/  components/  pages/  types/
+
+Backend:
+server/src/
+  routes/  services/  types/
 ```
+
 
 ## Getting started
 
@@ -75,8 +73,6 @@ Then open http://localhost:5173.
 |---|---|
 | `npm run dev` | Start the server and restart on file changes |
 | `npm run build` | Compile TypeScript to `dist/` |
-| `npm start` | Run the compiled build |
-| `npm run typecheck` | Check types without building |
 
 ### Client (`client/`)
 
@@ -89,11 +85,13 @@ Then open http://localhost:5173.
 
 ## API
 
+Backend runs on port 3001
+
 Base URL: `http://localhost:3001/api`
 
 ### `GET /pokemon/:name`
 
-Returns one Pokémon. `:name` can be a name (`pikachu`) or a Pokédex number (`25`) and isn't case-sensitive.
+Returns one Pokemon. `:name` can be a name (`pikachu`) or a Pokedex number (`25`) and isn't case-sensitive.
 
 **Example response**
 
@@ -113,27 +111,24 @@ Returns one Pokémon. `:name` can be a name (`pikachu`) or a Pokédex number (`2
 
 | Status | When |
 |---|---|
-| `404` | No Pokémon matches the name or id: `{ "error": "Pokémon not found" }` |
-| `500` | PokéAPI request failed |
+| `404` | No Pokemon matches the name or id: `{ "error": "Pokemon not found" }` |
+| `500` | PokeAPI request failed |
 
-<!-- TODO: document GET /pokemon?limit=&offset= once it exists -->
-
-## Configuration
-
-| Variable | Default | Description |
-|---|---|---|
-| `PORT` | `3001` | Port the Express server listens on |
 
 ## Roadmap
 
-<!-- TODO: keep this up to date as you go -->
-1. Frontend search page
-2. List endpoint and Pokémon grid
-3. Routing with `react-router-dom` (grid page and detail page)
+Due to time constraint if I would continue the application I would work on the following:
+
+1. Separate page for viewing all Pokemon (E.g top=20, skip=20).
+2. Api call for fetching all Pokemon with above criteria.
+3. Routing with `react-router-dom` (Search page and list page).
+4. Testing suite.
+5. Potential race condition issue with Pokemon search. (E.g 1st function call takes a long time and the user makes a 2nd call quickly after the first).
+
 
 ## Acknowledgements
 
-- Pokémon data and images come from [PokéAPI](https://pokeapi.co/).
+- Pokemon data and images come from [PokéAPI](https://pokeapi.co/).
 
 
 ## License
