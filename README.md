@@ -2,7 +2,7 @@
 
 A locally run web app for searching Pokemon. The React frontend talks to an Express backend. The backend gets data from [PokéAPI](https://pokeapi.co/) and trims it down to only what the UI needs.
 
-Initial design made in figma ![picture of initial layout design](images/design.png)¨
+Initial design made in figma ![picture of initial layout design](images/design.png)
 
 Current state of frontend
 ![Picture of frontend in its current state](images/frontend.png)
@@ -43,8 +43,8 @@ server/src/
 ### Install
 
 ```bash
-cd server && npm install
-cd ../client && npm install
+cd server -> npm install
+cd ../client -> npm install
 ```
 
 ### Run in development
@@ -124,13 +124,9 @@ Due to time constraint if I would continue the application I would work on the f
 3. Routing with `react-router-dom` (Search page and list page).
 4. Testing suite.
 5. Potential race condition issue with Pokemon search. (E.g 1st function call takes a long time and the user makes a 2nd call quickly after the first).
+6. Application deployment (E.g Vercel)
 
 
 ## Acknowledgements
 
 - Pokemon data and images come from [PokéAPI](https://pokeapi.co/).
-
-
-## License
-
-<!-- TODO: choose a license, e.g. MIT -->
