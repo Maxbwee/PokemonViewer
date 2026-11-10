@@ -72,16 +72,12 @@ Then open http://localhost:5173.
 | Command | Description |
 |---|---|
 | `npm run dev` | Start the server and restart on file changes |
-| `npm run build` | Compile TypeScript to `dist/` |
 
 ### Client (`client/`)
 
 | Command | Description |
 |---|---|
 | `npm run dev` | Start the Vite dev server |
-| `npm run build` | Type-check and build for production |
-| `npm run preview` | Preview the production build |
-| `npm run lint` | Run ESLint |
 
 ## API
 
@@ -125,6 +121,7 @@ Due to time constraint if I would continue the application I would work on the f
 4. Testing suite.
 5. Potential race condition issue with Pokemon search. (E.g 1st function call takes a long time and the user makes a 2nd call quickly after the first).
 6. Application deployment (E.g Vercel)
+7. Styling for the application. (E.g pill shaped search bar)
 
 
 ## Acknowledgements

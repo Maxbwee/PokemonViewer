@@ -4,10 +4,10 @@ import type { PokemonDetail } from "../types/pokemon.js";
 
 export async function getPokemonByName(name: string): Promise<PokemonDetail | null> {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(name.trim())}`);
-    if(res.status === 404) {
+    if (res.status === 404) {
         return null;
     }
-    if(!res.ok) {
+    if (!res.ok) {
         throw new Error(`PokeAPI request failed (${res.status})`)
     }
     const apiData = (await res.json() as RawPokemon);
@@ -18,6 +18,6 @@ export async function getPokemonByName(name: string): Promise<PokemonDetail | nu
         height: apiData.height,
         weight: apiData.weight,
         types: apiData.types.map((apiType) => apiType.type.name),
-        sprite: apiData.sprites.other?.["official-artwork"]?.front_default ?? apiData.sprites.front_default 
+        sprite: apiData.sprites.other?.["official-artwork"]?.front_default ?? apiData.sprites.front_default
     };
 }

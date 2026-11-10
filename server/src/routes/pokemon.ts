@@ -4,15 +4,17 @@ import { getPokemonByName } from "../services/pokeapi.js";
 const router = Router();
 
 router.get("/:name", async (req, res) => {
-    const name = req.params.name.toLowerCase();
-    const pokemon = await getPokemonByName(name);
-
-    if(!pokemon) {
-        res.status(404).json({error: "Pokemon not found" });
-        return;
+    try {
+        const pokemon = await getPokemonByName(req.params.name.toLowerCase());
+        if (!pokemon) {
+            res.status(404).json({ error: "Pokemon not found" });
+            return;
+        }
+        res.json(pokemon);
+    } catch (err) {
+        console.error(err);
+        res.status(502).json({ error: "Failed to fetch Pokemon data" });
     }
-
-    res.json(pokemon);
 });
 
 export default router;
