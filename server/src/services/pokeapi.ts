@@ -3,10 +3,16 @@ import type { PokemonDetail } from "../types/pokemon.js";
 
 
 export async function getPokemonByName(name: string): Promise<PokemonDetail | null> {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(name.trim())}`);
-    if (res.status === 404) {
+    
+
+    const clean = name.trim().toLowerCase().replace(/[ .]+/g, "-");
+    
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(clean.trim())}`);
+    
+    if (res.status >= 400 && res.status < 500) {
         return null;
-    }
+     } 
+
     if (!res.ok) {
         throw new Error(`PokeAPI request failed (${res.status})`)
     }

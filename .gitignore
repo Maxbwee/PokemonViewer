@@ -1,0 +1,25 @@
+# Dependencies (rebuilt by `npm install`)
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+*.log
+
+# Editor / OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/

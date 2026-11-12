@@ -11,7 +11,7 @@ export default function PokemonCard({pokemon} : PokemonCardProps) {
     const weightKg = (pokemon.weight / 10).toFixed(1);
 
     return (
-        <article className="pokemon-card">
+        <div className="pokemon-card">
             <section className="pokemon-card-image-section">
                 {pokemon.sprite ? (
                     <img className="pokemon-card-image" src={pokemon.sprite} alt={pokemon.name} />
@@ -43,6 +43,6 @@ export default function PokemonCard({pokemon} : PokemonCardProps) {
                     <p>{weightKg} kg</p>
                 </div>
             </section>
-        </article>
+        </div>
     );
 }

@@ -1,6 +1,5 @@
 import type { PokemonDetail } from "../types/pokemon";
 
-
 export async function fetchPokemon(name: string): Promise<PokemonDetail | null> {
 
     const res = await fetch(`/api/pokemon/${encodeURIComponent(name)}`);
